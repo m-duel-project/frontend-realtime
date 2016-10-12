@@ -164,10 +164,13 @@ namespace m_duel_frontend.Controllers
 
         public static string HttpPostRequestResponseService()
         {
-            var request = (HttpWebRequest)WebRequest.Create("https://asiasoutheast.services.azureml.net/workspaces/46d0e60b05b34558827abd41f11d204f/services/06fbd51255814fbcad23d02cd4607f44/execute?api-version=2.0&details=true HTTP/1.1");
+            var request = (HttpWebRequest)WebRequest.Create(
+                //"http://requestb.in/z2ewgtz2"
+                "https://asiasoutheast.services.azureml.net/workspaces/46d0e60b05b34558827abd41f11d204f/services/06fbd51255814fbcad23d02cd4607f44/execute?api-version=2.0&details=true HTTP/1.1"
+                );
 
             var postData = "{\"Inputs\":{\"input1\":{\"ColumnNames\":[\"idx\",\"나이\",\"프로모션참여수\",\"식별자\",\"일평균게임플레이분\",\"90일내아이템구매수\",\"게임레벨범위\",\"보유크리스탈\",\"유입경로\",\"인종\",\"성별\",\"가입코드\",\"구매번호\",\"주당접속수\",\"가입국가\",\"이탈여부\"],\"Values\":[[\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"value\",\"value\",\"value\",\"0\",\"0\",\"0\",\"value\",\"value\"],[\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"value\",\"value\",\"value\",\"0\",\"0\",\"0\",\"value\",\"value\"]]}},\"GlobalParameters\":{}}";
-            var data = Encoding.ASCII.GetBytes(postData);
+            var data = Encoding.UTF8.GetBytes(postData);
 
             request.Method = "POST";
             request.Headers[HttpRequestHeader.Authorization] =
