@@ -17,6 +17,9 @@
 어싱크 리퀴스트가 실패함.
 http request로 보내보았지만 역시 400 에러.
 
+포스트 바디를 아스키 인코딩하여 문제가됨.
+requestb.in 으로 전송되는 데이터를 확인한 결과, 컬럼들이 깨져서 나왔고, UTF8인코딩으로 변환하여 해겨라였음.
+
 ### storage insert
 더미 데이터를 azure storage에 삽입
 MS Storage Exploerer에서 데이터 삽입 확인.
