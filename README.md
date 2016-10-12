@@ -12,3 +12,15 @@
 - 예측된 결과를 DB의 member 테이블에 update 수행
 - (option) 1초 간격으로 예측을 요청하는 디바이스 시뮬레이션 수행 - console appliation 활용
 - (option) apache jmetor를 이용해 초당 100 reqest/sec 테스트 수행
+
+### ml rre 실패
+어싱크 리퀴스트가 실패함.
+http request로 보내보았지만 역시 400 에러.
+
+### storage insert
+더미 데이터를 azure storage에 삽입
+MS Storage Exploerer에서 데이터 삽입 확인.
+
+### sql insert
+backend 팀의 코드를 복붙 +_+ 감사합니다 :D
+_
