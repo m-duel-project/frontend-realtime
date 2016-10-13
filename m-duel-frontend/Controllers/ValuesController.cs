@@ -93,7 +93,7 @@ namespace m_duel_frontend.Controllers
             string myBlob = "aaa";
 
             using (var connection = new SqlConnection(
-        "Server=tcp:dwasqldb.database.windows.net,1433;Initial Catalog=m-duel-sql;Persist Security Info=False;User ID=konan@dwasqldb;Password=P@ssw0rd;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+        "Server=tcp:<서버주소>.database.windows.net,1433;Initial Catalog=m-duel-sql;Persist Security Info=False;User ID=<유저명>;Password=<비번>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
             ))  // 연결 문자열을 복사하고 Azure SQL Database 생성시 지정한 user id와 pwd로 변경. 서버명과 DB명은 자동으로 연결 문자열에 지정
             {
                 connection.Open();
@@ -166,7 +166,7 @@ namespace m_duel_frontend.Controllers
         {
             var request = (HttpWebRequest)WebRequest.Create(
                 //"http://requestb.in/z2ewgtz2"
-                "https://asiasoutheast.services.azureml.net/workspaces/46d0e60b05b34558827abd41f11d204f/services/06fbd51255814fbcad23d02cd4607f44/execute?api-version=2.0&details=true HTTP/1.1"
+                "https://asiasoutheast.services.azureml.net/API주소"
                 );
 
             var postData = "{\"Inputs\":{\"input1\":{\"ColumnNames\":[\"idx\",\"나이\",\"프로모션참여수\",\"식별자\",\"일평균게임플레이분\",\"90일내아이템구매수\",\"게임레벨범위\",\"보유크리스탈\",\"유입경로\",\"인종\",\"성별\",\"가입코드\",\"구매번호\",\"주당접속수\",\"가입국가\",\"이탈여부\"],\"Values\":[[\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"value\",\"value\",\"value\",\"0\",\"0\",\"0\",\"value\",\"value\"],[\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"0\",\"value\",\"value\",\"value\",\"0\",\"0\",\"0\",\"value\",\"value\"]]}},\"GlobalParameters\":{}}";
@@ -174,7 +174,7 @@ namespace m_duel_frontend.Controllers
 
             request.Method = "POST";
             request.Headers[HttpRequestHeader.Authorization] =
-                "Bearer r4it0F/hzmF+V9Krh6bC3I31JDhXEzol/AE0a3yRosBpukjABxoxiojxSlKwipPgkYFoECq7mdhPhMMmo+qDgg==";
+                "Bearer API키";
             request.ContentType = "application/json; charset=utf-8";
             request.ContentLength = data.Length;
 
@@ -218,10 +218,10 @@ namespace m_duel_frontend.Controllers
                     {
                     }
                 };
-                const string apiKey = "r4it0F/hzmF+V9Krh6bC3I31JDhXEzol/AE0a3yRosBpukjABxoxiojxSlKwipPgkYFoECq7mdhPhMMmo+qDgg=="; // Replace this with the API key for the web service
+                const string apiKey = "API키"; // Replace this with the API key for the web service
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
 
-                client.BaseAddress = new Uri("https://asiasoutheast.services.azureml.net/workspaces/46d0e60b05b34558827abd41f11d204f/services/06fbd51255814fbcad23d02cd4607f44/execute?api-version=2.0&details=true");
+                client.BaseAddress = new Uri("https://asiasoutheast.services.azureml.net/API주소");
 
                 // WARNING: The 'await' statement below can result in a deadlock if you are calling this code from the UI thread of an ASP.Net application.
                 // One way to address this would be to call ConfigureAwait(false) so that the execution does not attempt to resume on the original context.
